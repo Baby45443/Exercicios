@@ -1,0 +1,109 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grounp Tags</title>
+    <style>
+body{
+    background-color: rgb(139, 136, 132);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+header {
+    background-color: rgb(255, 255, 255);
+    padding: 10px;
+    margin: 10px;
+}
+main{
+    background-color: rgb(255, 255, 255);
+      padding: 10px;
+    margin: 10px;
+    border-radius: 10px; /*Para arredondar a bordar*/
+
+}
+footer{
+    background-color: rgba(102, 95, 95, 0.671);
+    color: black;
+    text-align: center;
+    padding: 4px;
+    margin: 0px;
+
+}
+div#bola {
+    height: 100px;
+    width: 100px;
+    margin: 10px;
+    background-color: rgb(202, 188, 188);
+    border-radius: 20%;
+}
+footer > p {
+    margin: 0px;
+    padding: 0px;
+}
+article > aside {
+    background-color: blanchedalmond;
+}
+nav {
+    background-color: rgb(138, 133, 133);
+    padding: 3px;
+    box-shadow: 5px 3px 7px 1px rgba(0, 0, 0, 0.541); /*Para criar sombra*/
+}
+nav > a {
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+    margin-right: 30px;
+
+}
+nav > a:hover{ /*Para indicar dentro de uma tag, assim dando para colocar*/
+    text-decoration: underline
+}
+article > aside{
+    background-color: rgba(102, 100, 98, 0.651);
+}
+#assuntos {
+    background-color: rgb(141, 134, 134);
+}
+
+    </style>
+</head>
+<body>
+
+    <header> <!--Cabeçalho da pagina-->
+        <h1>Meu site</h1>
+<nav> <!--Para colocar navegação de links, como MENU-->
+    <a href="a">Botão</a>
+    <a href="">Botão</a>
+    <a href="">Botão</a>
+    <a href="">Botão</a>
+    <a href="">Botão</a>
+</nav>
+    </header>
+    <main> <!-- Para localizar o conteudo prinicipal-->
+<section id="assuntos"> <!--Define uma area ou seção-->
+<p>Esporte, noticias e economia</p>
+</section>
+
+    <section id="noticias"> <!--O id é para localizar o elemento/tag especifico-->
+<article> <!--Define um artigo-->
+    <h2>Noticias sobre o mundo</h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse nesciunt numquam velit tempore dicta. Molestias ducimus reiciendis laborum ex tempore, sunt explicabo consequuntur minima nulla iure, enim, laudantium architecto magni.</p>
+    <aside> <!--Define o conteudo alem do conteudo da pagina-->
+        <p>Artigo escrito pelo jose Nagaraki</p>
+    </aside>
+</article>
+
+    </section>
+
+        <footer> <!--Define o rodapé da página-->
+<p>Desenvolvido pelo curso em video</p>
+        </footer>
+        <div id="bola">
+
+        </div>
+
+    </main>
+    
+</body>
+</html>

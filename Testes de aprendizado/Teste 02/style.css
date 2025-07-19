@@ -1,0 +1,17 @@
+@charset "UTF-8";
+
+body{ 
+    background-image: linear-gradient(to #075cbe) #0b34b1 #124fdc;
+    font-size: medium;
+    font-style: initial;
+    
+
+}
+h1{
+    font-style: unset;
+    color: #8a2be2;
+    
+}
+p {
+    text-decoration: dashed;
+}

@@ -1,0 +1,85 @@
+@charset "UTF-8";
+
+* {
+    font-family: Arial, Helvetica, sans-serif;
+    border: 10px;
+ 
+   
+}
+body{
+    background-image:linear-gradient(to right,#b4ab97,#e0dad2);
+}
+h1{
+font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; 
+font-weight: 200;
+margin: auto;
+color: #594D3E;
+text-align: center;
+
+}
+
+main{
+    margin: auto;
+    background-color: aliceblue;
+    box-shadow: 5px 3px #d9d6d09d;
+    width: auto, 800px; /*Largura*/
+    padding: 10px; /*Espaçamento*/
+    margin: auto; /*Para centralizra o textop indepente de como estiver a janela de navegação*/
+border-radius: 10px; /*Para aredondar a borda, criar uma borda*/
+}
+p{
+    text-align: justify;
+
+}
+h2{
+    text-align: center;
+}
+p.Plantas {
+text-align: center;
+}
+p > nav {
+    display: none;
+}
+
+div:hover > p { 
+    display: block;
+    color: rgb(228, 0, 0);
+
+}
+nav {
+    text-align: center;
+    border: 10px;
+   
+}
+
+br{
+    text-align: center;
+}
+div > nav {
+    display: none;
+}
+p.Plantas > nav {
+    display: block;
+}
+div:hover > nav {
+    display: block;
+}
+p.Capa {
+    text-align: center;
+}
+a{
+    border: 5px;
+    color: rgb(0, 0, 0);
+  
+   height: 40px;
+   width: 40px;
+    
+}
+footer{
+    background-color: #b4ab973d;
+}
+button{
+    background-color: #594d3e77;
+    margin-top: 2px;
+    padding: 2px;
+}
