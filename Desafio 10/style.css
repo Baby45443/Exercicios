@@ -71,9 +71,9 @@ nav{
 nav > a {
     color: var(--cor0);
     padding: 10px;
-    border-radius: 5px;
+    border-radius: 5px; /*Arredondamento da borda*/
     text-decoration: none; /*Para tirar o sublinado*/
-    font-weight: bold;
+    font-weight: bold; /*Para colocar em negrito*/
     transition-duration: 0.5s; /*Para selecionar o tempo que leva do mouse encima até aparecer o backcolor do hover*/
    
 }

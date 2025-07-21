@@ -3,83 +3,86 @@
 * {
     font-family: Arial, Helvetica, sans-serif;
     border: 10px;
- 
-   
+    margin: 0px;
+    padding: 0px;
+}
+:root {
+    --cor01: #8BB4D9;
+    --cor02: #365B73;
+    --cor03: #B3DAF2;
+    --cor04: #386273;
+    --cor05: #1c495a;
+
 }
 body{
-    background-image:linear-gradient(to right,#b4ab97,#e0dad2);
+    background-image:linear-gradient(to right, var(--cor03), var(--cor02));
 }
-h1{
-font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; 
-font-weight: 200;
-margin: auto;
-color: #594D3E;
-text-align: center;
-
-}
-
-main{
-    margin: auto;
-    background-color: aliceblue;
-    box-shadow: 5px 3px #d9d6d09d;
-    width: auto, 800px; /*Largura*/
-    padding: 10px; /*Espaçamento*/
-    margin: auto; /*Para centralizra o textop indepente de como estiver a janela de navegação*/
-border-radius: 10px; /*Para aredondar a borda, criar uma borda*/
-}
-p{
-    text-align: justify;
-
-}
-h2{
+header > p{
+    background-image: linear-gradient(to bottom, var(--cor03), var(--cor05));
+    min-height: 150px;
     text-align: center;
-}
-p.Plantas {
-text-align: center;
-}
-p > nav {
-    display: none;
-}
-
-div:hover > p { 
-    display: block;
-    color: rgb(228, 0, 0);
-
-}
-nav {
-    text-align: center;
-    border: 10px;
-   
-}
-
-br{
-    text-align: center;
-}
-div > nav {
-    display: none;
-}
-p.Plantas > nav {
-    display: block;
-}
-div:hover > nav {
-    display: block;
-}
-p.Capa {
-    text-align: center;
-}
-a{
-    border: 5px;
-    color: rgb(0, 0, 0);
-  
-   height: 40px;
-   width: 40px;
+    padding-top: 10px;   
+    margin: -12PX -10PX 0px -10PX;
     
 }
+
+
+nav {
+    background-color: var(--cor05);
+    text-decoration: none;
+    padding: 10px;
+    box-shadow: 0px 7px 7px rgba(0, 0, 0, 0.562); /*Para criar um sombreamento na parte de baixo do nav*/
+   
+}
+nav > a {
+    color: var(--cor03);
+    padding: 10px;
+    border-radius: 5px;
+    text-decoration: none; /*Para tirar o sublinado*/
+    font-weight: bold;
+    transition-duration: 0.5s; /*Para selecionar o tempo que leva do mouse encima até aparecer o backcolor do hover*/}
+
+    nav > a:hover {
+    background-color: var(--cor03);
+    color: var(--cor05);
+}
+
 footer{
     background-color: #b4ab973d;
 }
-button{
-    background-color: #594d3e77;
-    margin-top: 2px;
-    padding: 2px;
+main{
+    background-color: white;
+    color: black;
+    margin: auto;
+    margin-bottom: 30px;
+    min-width: 300px;
+    max-width: 1000px ;
+    padding: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    border-bottom-left-radius: 10px; /*Para criar borda na esquerda*/
+    border-bottom-right-radius: 10px;
+    /*Para criar borda na direita*/
 }
+main p {
+  
+    margin: 15px 0px ;
+    text-align: justify;
+    text-indent: 30px;
+    font-size: 1em;
+    line-height: 2em; /*É o espaço que fica de uma linha a outra*/
+}
+main h2{
+    font-size: 1.3em;
+    background-image: linear-gradient(to right, var(--cor03), transparent); /*Para criar um degrade da cor0 até transparente*/
+    text-indent: 8px;
+    font-weight: bold;
+}
+footer{
+    background-color: var(--cor04);
+    color: white;
+    text-align: center;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+
