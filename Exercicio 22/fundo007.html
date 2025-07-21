@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+#container{
+
+    background-image: url(imagens/target001.png);
+    background-size: 100% 100%;
+    position: relative; /*Todo posicionamento de um box ja é relativo*/
+    height: 500px;
+    background-color: blueviolet;
+    padding: 10px;
+}
+#conteudo{
+    position: absolute; /*BOtando esse posicionamento é possivel usar duas propriedades, left e top*/
+    left: 50%; /*Distancia da borda inicial horizontal*/
+    top: 50%; /*Distancia da borda inicial ventical*/
+    background-color: yellow;
+    height: 200px;
+    width: 400px;
+    background-image: url(imagens/target001.png);
+    background-size: 100% 100%; /*Para usar 100% da iamgem*/
+    transform: translate(-50% ,-50%); /*Para mexer no componente, direita, esquerda, baixo, cima*/
+}
+
+    </style>
+</head>
+<body>
+    <section id="container">
+        <article id="conteudo">
+
+        </article>
+    </section>
+    
+</body>
+</html>
