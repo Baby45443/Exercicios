@@ -17,14 +17,17 @@
 body{
     background-image:linear-gradient(to right, var(--cor03), var(--cor02));
 }
-header > p{
+header {
     background-image: linear-gradient(to bottom, var(--cor03), var(--cor05));
     min-height: 150px;
-    text-align: center;
-    padding-top: 10px;   
-    margin: -12PX -10PX 0px -10PX;
+    text-align: center;   
+    margin: -12PX -10PX 0px -10PX;}
     
+header > img{
+    padding: 0px;
+    margin: 0px;
 }
+
 
 
 nav {
@@ -65,17 +68,24 @@ main{
 }
 main p {
   
-    margin: 15px 0px ;
+    margin: 50px ;
     text-align: justify;
     text-indent: 30px;
     font-size: 1em;
-    line-height: 2em; /*É o espaço que fica de uma linha a outra*/
+    line-height: 1.4em; /*É o espaço que fica de uma linha a outra*/
 }
 main h2{
     font-size: 1.3em;
     background-image: linear-gradient(to right, var(--cor03), transparent); /*Para criar um degrade da cor0 até transparente*/
     text-indent: 8px;
     font-weight: bold;
+}
+section{
+    background-image: url(Imagens/urbano.pq.jpg);
+    background-position: right center;
+    background-repeat: no-repeat;
+    
+
 }
 footer{
     background-color: var(--cor04);
@@ -84,5 +94,4 @@ footer{
     padding: 5px;
     border-radius: 5px;
 }
-
 
