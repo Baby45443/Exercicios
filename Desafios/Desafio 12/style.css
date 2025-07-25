@@ -5,20 +5,24 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Passion+One:wght@400;700;900&family=Sriracha&display=swap');
 
-:root{
+/*O import é para importar fontes de fora do VSCode*/
+
+:root{ /*Variaveis de fontes*/
     --fonte01: Verdana, Geneva, Tahoma, Sans-serif;
     --fonte02: "Passion One", sans-serif;
     --fonte03: "Sriracha", cursive;
     
 }
-*{
+*{  /*Marcação CSS mundi, para ativar em todos os elementos*/
     margin: 0px;
     padding: 0px;
+    /*Para deixar o html com margin e padding zerados*/
+
     
 }
 html, body{
     background-color: darkgray;
-    min-height: 100vh;
+    min-height: 100vh; /* O tamanho minimo da altura da viewport*/
     font-family: var(--fonte01);
 }
 header{
@@ -35,36 +39,37 @@ header > h1{
 
 }
 header > p{
-    padding-bottom: 50px;
+    padding-bottom: 50px; /*Para criar um espaço abaixo do paragrafo*/
 
 }
 header a, footer a {
     color: white;
-    text-decoration: none;
-    font-weight: bold;
+    text-decoration: none; /*Para tirar o sublinado do link*/
+    font-weight: bold; /*Para deixar em negrito*/
 }
 header a:hover, footer a:hover {
-    text-decoration: underline;
+    text-decoration: underline; /*Para quando passar o mouse encima aparacer o sublinado*/
 
 }
 section{
     padding-top: 10vh; /*Para usar somente 10% do viewport na parte de cima*/
     padding-bottom: 10vh; /*Para usar somente 10% da viewport na parte de baixo*/
+          /*MUITO IMPORTANTE PARA TRANSIÇÃO*/
     line-height: 2em;  /*Para dar espaçmento entre as letras*/
-    padding-left: 30px;
+    padding-left: 30px; /*Para criar um espaçamento lateral da direita*/
     font-family: var(--fonte03);
-    font-size: 3vw;
+    font-size: 3vw; /*Para aumentar e diminuir a letra de acordo com o tamanho da tela, que seria 3% da largura da viewport*/
 }
 section > p{
     padding-bottom: 2em;
     border-radius: 10px;
 
 }
-section.normal{
+section.normal{ /*classe normal*/
     background-color: white;
     color: black;
 }
-section.imagem {
+section.imagem { /*Classe de imagem*/
     background-color: black;
     color: white;
     box-shadow: inset 6px 6px 13px 0px rgba(0, 0, 0, 0.562);
@@ -72,19 +77,19 @@ section.imagem {
 }
 section.imagem > p{
     background-color: rgba(54, 49, 49, 0.384);
-    display: inline-block;
+    display: inline-block; /*Para trsnformar a caixa na que se adapta conforme o tamanho, como fala na parte dos estudops das caixas*/
     padding: 5px;
-    text-shadow: 1px 1px 0px black;
+    text-shadow: 1px 1px 0px black; /*Para criar um sombreamento no texto*/
 }
 section#img01 {
 
     background-image: url('imagens/background001.jpg');
     background-position: right center;
-    background-size: cover;
+    background-size: cover; /*Para se adaptar ao tamanho da tela, picotando a imagem*/
 }
 section#img02 {
     background-image: url('./imagens/background002.jpg');
-    background-size: cover;
+    background-size: cover; /*Para se adaptar ao tamanho da tela, picotando a imagem*/
 }
 footer {
     background-color: black;
