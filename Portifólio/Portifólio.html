@@ -7,6 +7,9 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div class="particulas">
+
+    </div>
     <nav class="navegacao">
         <ul class="menu">
             <li>
@@ -38,44 +41,69 @@
         <h2 class="sobre-titulo">Sobre mim</h2>
         <div class="sobre-caixa">
             <p class="sobre-paragrafo">
-                Olá, sou um estudante de analise e desenvolvimento de sistemas. Meu foco é front-end, para poder desenvolver projetos com design modernos.
+                Olá, sou um estudante de analise e desenvolvimento de sistemas. Meu foco é front-end, para poder desenvolver projetos com design modernos. EStou iniciando em ADS, mas com o foco principal em programação por fora.
             </p>
         </div>
         <section id="projetos" class="projetos">
-            <h class="projetos-titulo">Meus Projetos</h>
+            <h2 class="projetos-titulo">Meus Projetos</h2>
             <div class="projetos-caixa">
+
                 <div class="projetos-card">
                     <img src="imagens/Android.jpg.jpg" alt="Seu navegador não é compativel" class="projetos-imagem">
-                    <h3 class="info-projetos">Origem Android</h3>
-                    <p class="paragrafo-projetos">Projeto sobre a origem do android</p>
+                    <div class="caixa-textos">
+                        <h3 class="info-projetos">Origem Android</h3>
+                        <p class="paragrafo-projetos">Projeto sobre a origem do android</p>
+                    </div>
+                    </div>
 
-                     <div class="projetos-card">
+                 <div class="projetos-card">
                     <img src="imagens/Cordel.jpg.jpg" alt="Seu navegador não é compativel" class="projetos-imagem">
-                    <h3 class="info-projetos">Projeto Cordel</h3>
-                    <p class="paragrafo-projetos">Projeto Cordel Moderno</p>
-                </div>
+                    <div class="caixa-textos">
+                        <h3 class="info-projetos">Projeto Cordel</h3>
+                        <p class="paragrafo-projetos">Projeto Cordel Moderno</p>
+                    </div>
+                 </div>
 
                  <div class="projetos-card">
                     <img src="imagens/Primeiro.jpg.jpg" alt="Seu navegador não é compativel" class="projetos-imagem">
-                    <h3 class="info-projetos">Primeiro Desafio</h3>
-                    <p class="paragrafo-projetos">Primeiro projeto realizado</p>
-                </div>
+                    <div class="caixa-textos">
+                        <h3 class="info-projetos">Primeiro Desafio</h3>
+                        <p class="paragrafo-projetos">Primeiro projeto realizado</p>
+                    </div>
                 </div>
             </div>
+                
 
         </section>
     </section>
     <section id="contatos" class="contatos">
-        <h2 class="contatos-titulo"></h2>
-        <form class="formulario-contato" id="formulario">
-           <div class="nome-form">
-            <input placeholder="Nome" class="campo-form">
-        </div>
+        <h2 class="contatos-titulo">Entre em contato</h2>
+        <form class="formulario-contatos" id="formulario" onsubmit="enviarWhats(event)">
            <div class="grupo-form">
-            <textarea placeholder="Digite sua mensagem" class="text-form"></textarea>
+            <input placeholder="Nome" class="campo-form" id="nome">
         </div>
+        <div class="grupo-form">
+            <textarea class="campo-form" placeholder="Digite sua mensagem" rows="5" id="mensagem"></textarea>
+        </div>
+        <button type="submit" class="botao-form">Enviar whatsaap</button>
 
         </form>
     </section>
+     <!--Código JavasCript abaixo--> 
+    <script> 
+        function enviarWhats (event) {
+            event.preventDefault(enviarWhats)}
+        
+
+        const nome = document.getElementById('nome').value;
+        const mensagem = document.getElementById('mensagem').value;
+        const telefone = '5511983456278'
+        const texto = `Olá, Me chamo ${nome}, ${mensagem}`; 
+        const msgFormatada = encodeURIComponent (texto)
+        const url = `https://wa.me/${telefone}?text=${msgFormatada}`
+        window.open(url, '_blank')
+       
+    </script>
+
 </body>
 </html>
