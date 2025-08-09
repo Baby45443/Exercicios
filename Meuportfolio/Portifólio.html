@@ -77,33 +77,38 @@
         </section>
     </section>
     <section id="contatos" class="contatos">
-        <h2 class="contatos-titulo">Entre em contato</h2>
-        <form class="formulario-contatos" id="formulario" onsubmit="enviarWhats(event)">
-           <div class="grupo-form">
+    <h2 class="contatos-titulo">Entre em contato</h2>
+    <form class="formulario-contatos" id="formulario" onsubmit="enviarWhats(event)">
+        <div class="grupo-form">
             <input placeholder="Nome" class="campo-form" id="nome">
         </div>
         <div class="grupo-form">
             <textarea class="campo-form" placeholder="Digite sua mensagem" rows="5" id="mensagem"></textarea>
         </div>
-        <button type="submit" class="botao-form">Enviar whatsaap</button>
+        <button type="submit" class="botao-form">Enviar WhatsApp</button>
+    </form>
+</section>
 
-        </form>
-    </section>
-     <!--Código JavasCript abaixo--> 
-    <script> 
-        function enviarWhats (event) {
-            event.preventDefault(enviarWhats)}
-        
+<script>
+function enviarWhats(event) {
+    event.preventDefault(); // Impede o envio normal do formulário
 
-        const nome = document.getElementById('nome').value;
-        const mensagem = document.getElementById('mensagem').value;
-        const telefone = '5511983456278'
-        const texto = `Olá, Me chamo ${nome}, ${mensagem}`; 
-        const msgFormatada = encodeURIComponent (texto)
-        const url = `https://wa.me/${telefone}?text=${msgFormatada}`
-        window.open(url, '_blank')
-       
-    </script>
+    const nome = document.getElementById('nome').value.trim();
+    const mensagem = document.getElementById('mensagem').value.trim();
+    const telefone = '5511983456278'; // Seu número com DDI e DDD
+
+    if (!nome || !mensagem) {
+        alert("Por favor, preencha todos os campos.");
+        return;
+    }
+
+    const texto = `Olá, me chamo ${nome}. ${mensagem}`;
+    const msgFormatada = encodeURIComponent(texto);
+    const url = `https://wa.me/${telefone}?text=${msgFormatada}`;
+
+    window.open(url, '_blank'); // Abre o WhatsApp em nova aba
+}
+</script>
 
 </body>
 </html>
