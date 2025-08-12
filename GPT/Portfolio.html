@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfólio - João Vitor</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            background: #0d1117;
+            color: #fff;
+            line-height: 1.6;
+        }
+
+        nav {
+            position: fixed;
+            width: 100%;
+            background: #161b22;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            top: 0;
+            left: 0;
+            z-index: 10;
+        }
+
+        nav a {
+            color: #58a6ff;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: #fff;
+        }
+
+        header {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        header img {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            border: 4px solid #58a6ff;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .subtitulo {
+            color: #8b949e;
+            font-size: 1.2rem;
+        }
+
+        section {
+            padding: 60px 20px;
+            max-width: 900px;
+            margin: auto;
+        }
+
+        .projetos {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: #161b22;
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card img {
+            max-width: 100%;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        .contato-form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        input, textarea, button {
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            outline: none;
+            font-size: 1rem;
+        }
+
+        input, textarea {
+            background: #0d1117;
+            border: 1px solid #30363d;
+            color: #fff;
+        }
+
+        button {
+            background: #58a6ff;
+            color: #fff;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: #1f6feb;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #8b949e;
+            border-top: 1px solid #30363d;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="#inicio">Início</a>
+        <a href="#sobre">Sobre</a>
+        <a href="#projetos">Projetos</a>
+        <a href="#contato">Contato</a>
+    </nav>
+
+    <header id="inicio">
+        <img src="imagens/Perfil.jpg.jpg" alt="Foto de João Vitor">
+        <h1>João Vitor</h1>
+        <p class="subtitulo">Estudante de Programação | Front-end</p>
+    </header>
+
+    <section id="sobre">
+        <h2>Sobre Mim</h2>
+        <p>Sou estudante de Análise e Desenvolvimento de Sistemas, com foco em desenvolvimento front-end. Tenho paixão por criar interfaces modernas, responsivas e intuitivas, buscando sempre aprimorar minhas habilidades e aprender novas tecnologias.</p>
+    </section>
+
+    <section id="projetos">
+        <h2>Meus Projetos</h2>
+        <div class="projetos">
+            <div class="card">
+                <img src="imagens/Android.jpg.jpg" alt="Projeto Android">
+                <h3>Origem Android</h3>
+                <p>Projeto sobre a história e evolução do Android.</p>
+            </div>
+            <div class="card">
+                <img src="imagens/Cordel.jpg.jpg" alt="Projeto Cordel">
+                <h3>Projeto Cordel</h3>
+                <p>Versão moderna e interativa de um cordel tradicional.</p>
+            </div>
+            <div class="card">
+                <img src="imagens/Primeiro.jpg.jpg" alt="Primeiro Desafio">
+                <h3>Primeiro Desafio</h3>
+                <p>Meu primeiro projeto como desenvolvedor.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contato">
+        <h2>Entre em Contato</h2>
+        <form class="contato-form" onsubmit="enviarWhats(event)">
+            <input type="text" id="nome" placeholder="Seu nome">
+            <textarea id="mensagem" placeholder="Digite sua mensagem"></textarea>
+            <button type="submit">Enviar WhatsApp</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>© 2025 João Vitor - Todos os direitos reservados</p>
+    </footer>
+
+    <script>
+        function enviarWhats(event) {
+            event.preventDefault();
+            const nome = document.getElementById('nome').value.trim();
+            const mensagem = document.getElementById('mensagem').value.trim();
+            const telefone = "5511983456278";
+
+            if (!nome || !mensagem) {
+                alert("Por favor, preencha todos os campos.");
+                return;
+            }
+
+            const texto = `Olá, me chamo ${nome}. ${mensagem}`;
+            const msgFormatada = encodeURIComponent(texto);
+            const url = `https://wa.me/${telefone}?text=${msgFormatada}`;
+
+            window.open(url, '_blank');
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Portfólio • João Vitor</title>
+  <meta name="description" content="Portfólio de João Vitor — estudante de Análise e Desenvolvimento de Sistemas, focado em Front-end.">
+  <style>
+    :root{
+      --bg:#071021;
+      --card:#0e1622;
+      --accent:#58a6ff;
+      --muted:#9aa6b2;
+      --glass: rgba(255,255,255,0.04);
+      --radius:14px;
+      --glass-2: rgba(255,255,255,0.02);
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
+    /* Reset */
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      min-height:100%;
+      background:var(--bg);
+      color:#e6eef6;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      overflow-x:hidden;
+    }
+
+    /* Canvas background sits behind everything */
+    #bg-canvas{position:fixed;inset:0;z-index:-2}
+    .bg-gradient{position:fixed;inset:0;z-index:-3;background:linear-gradient(120deg,#031026 0%, rgba(8,18,36,0.7) 40%, rgba(12,24,44,0.8) 100%);}
+
+    /* Layout */
+    header{
+      display:flex;align-items:center;gap:24px;padding:28px 22px 12px;max-width:1200px;margin:0 auto;
+    }
+    .brand{
+      display:flex;align-items:center;gap:12px;text-decoration:none;color:inherit
+    }
+    .avatar{
+      width:64px;height:64px;border-radius:12px;overflow:hidden;border:2px solid rgba(88,166,255,0.14);background:linear-gradient(135deg,#0b1220,#132033);
+      display:inline-grid;place-items:center;font-weight:700;color:var(--accent)
+    }
+    .brand h1{font-size:1.05rem;margin:0}
+    .brand p{font-size:0.78rem;margin:0;color:var(--muted)}
+
+    nav.top-nav{margin-left:auto;display:flex;gap:10px;align-items:center}
+    nav.top-nav a{color:var(--muted);text-decoration:none;padding:8px 12px;border-radius:10px;font-weight:600}
+    nav.top-nav a:hover{color:var(--accent);background:var(--glass)}
+
+    main{max-width:1200px;margin:24px auto;padding:0 20px}
+
+    /* Hero */
+    .hero{
+      display:grid;grid-template-columns:1fr 420px;gap:28px;align-items:center;margin-top:18px
+    }
+    .hero-card{
+      background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border-radius:var(--radius);padding:28px;border:1px solid var(--glass-2);backdrop-filter: blur(6px);
+      box-shadow: 0 6px 30px rgba(3,8,20,0.6);
+    }
+    .headline{font-size:1.6rem;line-height:1.05;margin-bottom:8px}
+    .lead{color:var(--muted);margin-bottom:18px}
+    .cta-row{display:flex;gap:12px;flex-wrap:wrap}
+    .btn{background:var(--accent);color:#052233;padding:10px 14px;border-radius:10px;border:none;font-weight:700;cursor:pointer}
+    .btn.secondary{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--muted)}
+    .btn.ghost{background:transparent;color:var(--muted)}
+
+    /* Profile card */
+    .profile{
+      display:flex;flex-direction:column;gap:12px;align-items:center;padding:20px;border-radius:12px;border:1px solid var(--glass-2);
+      background:linear-gradient(180deg, rgba(11,18,28,0.6), rgba(8,14,24,0.35));
+    }
+    .profile img{width:100%;height:230px;object-fit:cover;border-radius:10px}
+    .profile h3{margin:0}
+    .profile p{color:var(--muted);font-size:0.9rem}
+
+    /* Projects */
+    .section-title{font-weight:800;margin-bottom:12px}
+    .filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}
+    .chip{padding:8px 12px;border-radius:999px;background:var(--glass);color:var(--muted);cursor:pointer;font-weight:700;font-size:0.85rem}
+    .chip.active{background:linear-gradient(90deg, rgba(88,166,255,0.14), rgba(88,166,255,0.06));color:var(--accent)}
+
+    .grid-projects{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px}
+    .project{background:var(--card);padding:14px;border-radius:12px;border:1px solid rgba(255,255,255,0.03);transition:transform .25s,box-shadow .25s;cursor:default}
+    .project:hover{transform:translateY(-6px);box-shadow:0 8px 30px rgba(2,8,20,0.6)}
+    .project img{width:100%;height:130px;object-fit:cover;border-radius:8px;margin-bottom:10px}
+    .project h4{margin:0 0 6px 0}
+    .project p{margin:0;color:var(--muted);font-size:0.92rem}
+    .project .tags{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap}
+    .tag{font-size:0.78rem;padding:6px 8px;border-radius:8px;background:rgba(255,255,255,0.02);color:var(--muted)}
+
+    /* Modal */
+    .modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:linear-gradient(180deg, rgba(2,6,12,0.6), rgba(2,6,12,0.8));z-index:60}
+    .modal.open{display:flex}
+    .modal-card{width:min(900px,95%);background:var(--card);padding:18px;border-radius:12px;border:1px solid var(--glass-2)}
+
+    /* Contact */
+    .contact-card{display:flex;gap:14px;flex-direction:column;padding:18px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.01));border:1px solid var(--glass-2)}
+    .input,textarea{background:transparent;border:1px solid rgba(255,255,255,0.04);padding:12px;border-radius:8px;color:inherit}
+    textarea{min-height:110px}
+
+    footer{margin:48px 0 30px;color:var(--muted);text-align:center}
+
+    /* Responsive */
+    @media (max-width:980px){
+      .hero{grid-template-columns:1fr;}
+      .profile img{height:180px}
+    }
+
+    @media (max-width:520px){
+      header{padding:18px}
+      .brand h1{font-size:0.98rem}
+      .hero-card{padding:18px}
+      .headline{font-size:1.2rem}
+    }
+
+    /* small animation touches */
+    .fade-in{opacity:0;transform:translateY(6px);animation:fadeIn .6s forwards}
+    @keyframes fadeIn{to{opacity:1;transform:none}}
+  </style>
+</head>
+<body>
+
+  <!-- decorative gradient layer -->
+  <div class="bg-gradient"></div>
+  <!-- animated canvas for particles & subtle waves -->
+  <canvas id="bg-canvas"></canvas>
+
+  <header>
+    <a class="brand" href="#inicio">
+      <div class="avatar">JV</div>
+      <div>
+        <h1>João Vitor</h1>
+        <p>Front-end • Estudante de Análise e Desenvolvimento de Sistemas</p>
+      </div>
+    </a>
+
+    <nav class="top-nav" aria-label="Navegação principal">
+      <a href="#projetos">Projetos</a>
+      <a href="#sobre">Sobre</a>
+      <a href="#contato">Contato</a>
+      <a id="btn-cv" class="btn ghost" href="#" onclick="downloadFakeCV()">Baixar CV</a>
+    </nav>
+  </header>
+
+  <main>
+
+    <section class="hero">
+      <div class="hero-card fade-in">
+        <div class="eyebrow" style="color:var(--accent);font-weight:800;margin-bottom:8px">Olá, eu sou</div>
+        <div class="headline">Sou João Vitor — <span style="color:var(--accent)">transformo ideias em experiências digitais</span></div>
+        <p class="lead">Sou estudante de Análise e Desenvolvimento de Sistemas com especialização em Front‑end. Crio interfaces modernas, responsivas e intuitivas que unem estética e desempenho. Estou sempre aprendendo novas ferramentas e técnicas para entregar projetos com alto padrão.</p>
+
+        <div class="cta-row">
+          <button class="btn" onclick="scrollToSection('projetos')">Ver Projetos</button>
+          <button class="btn secondary" onclick="openWhats()">Falar no WhatsApp</button>
+          <button class="btn secondary" onclick="scrollToSection('contato')">Contato</button>
+        </div>
+
+        <div style="margin-top:18px;color:var(--muted);font-size:0.92rem">Tecnologias: <strong style="color:var(--accent)">HTML • CSS • JavaScript</strong></div>
+      </div>
+
+      <aside class="profile fade-in" style="animation-delay:.15s">
+        <img src="imagens/Perfil.jpg.jpg" alt="Foto de João Vitor" loading="lazy">
+        <h3>João Vitor</h3>
+        <p>Estudante de ADS — Front‑end</p>
+        <div style="display:flex;gap:8px;width:100%">
+          <a class="chip" href="#contato">Contratar</a>
+          <a class="chip" href="#projetos">Ver projetos</a>
+        </div>
+      </aside>
+    </section>
+
+    <section id="projetos" style="margin-top:34px">
+      <h2 class="section-title">Projetos</h2>
+      <div class="filters" id="filters"></div>
+      <div class="grid-projects" id="projects-grid"></div>
+    </section>
+
+    <section id="sobre" style="margin-top:32px">
+      <h2 class="section-title">Sobre Mim</h2>
+      <div class="hero-card">
+        <p style="color:var(--muted);margin-bottom:12px">Sou João Vitor, estudante de Análise e Desenvolvimento de Sistemas e apaixonado por transformar ideias em experiências digitais. Especializado em desenvolvimento front-end, crio interfaces modernas, responsivas e envolventes, unindo design criativo e código de qualidade. Meu objetivo é entregar soluções que encantem visualmente e funcionem de forma impecável.</p>
+        <div style="display:flex;gap:8px;flex-wrap:wrap">
+          <div class="tag">HTML</div><div class="tag">CSS</div><div class="tag">JavaScript</div><div class="tag">Responsive</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contato" style="margin-top:32px">
+      <h2 class="section-title">Contato</h2>
+      <div class="contact-card">
+        <input id="nameInput" class="input" placeholder="Seu nome">
+        <input id="emailInput" class="input" placeholder="Seu e-mail (opcional)">
+        <textarea id="msgInput" placeholder="Sua mensagem" class="input"></textarea>
+        <div style="display:flex;gap:8px;flex-wrap:wrap">
+          <button class="btn" onclick="openWhatsFromForm()">Enviar pelo WhatsApp</button>
+          <button class="btn secondary" onclick="copyWhatsLink()">Copiar link</button>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      © 2025 • João Vitor • Desenvolvedor Front‑end em formação
+    </footer>
+  </main>
+
+  <!-- Modal for project details -->
+  <div id="modal" class="modal" role="dialog" aria-modal="true">
+    <div class="modal-card" id="modalCard">
+      <button style="float:right" onclick="closeModal()">Fechar</button>
+      <div id="modalContent"></div>
+    </div>
+  </div>
+
+  <script>
+    /* ------------------ Dynamic projects data ------------------ */
+    const projetos = [
+      {id:1,titulo:'Origem Android',desc:'Projeto sobre a história e evolução do Android, com layout responsivo e cards interativos.',img:'imagens/Android.jpg.jpg',tags:['Design','Pesquisa']},
+      {id:2,titulo:'Projeto Cordel',desc:'Cordel moderno com tipografia dinâmica e efeitos responsivos.',img:'imagens/Cordel.jpg.jpg',tags:['UI','Interativo']},
+      {id:3,titulo:'Primeiro Desafio',desc:'Primeiro projeto: HTML/CSS básicos, boa prática semântica e responsividade.',img:'imagens/Primeiro.jpg.jpg',tags:['Frontend','Iniciação']}
+    ];
+
+    const projectsGrid = document.getElementById('projects-grid');
+    const filtersEl = document.getElementById('filters');
+
+    // build unique tag list
+    const tagSet = new Set(); projetos.forEach(p=>p.tags.forEach(t=>tagSet.add(t)));
+    const tags = ['Todos',...Array.from(tagSet)];
+
+    tags.forEach((t,i)=>{
+      const btn = document.createElement('button');
+      btn.className='chip ' + (i===0? 'active':'');
+      btn.textContent = t;
+      btn.onclick = ()=>{ document.querySelectorAll('.chip').forEach(c=>c.classList.remove('active')); btn.classList.add('active'); renderProjects(t==='Todos'? null : t) };
+      filtersEl.appendChild(btn);
+    });
+
+    function renderProjects(filterTag=null){
+      projectsGrid.innerHTML='';
+      const list = filterTag ? projetos.filter(p=>p.tags.includes(filterTag)) : projetos;
+      list.forEach(p=>{
+        const el = document.createElement('article'); el.className='project fade-in';
+        el.innerHTML = `\n          <img src="${p.img}" alt="${p.titulo}" loading="lazy">\n          <h4>${p.titulo}</h4>\n          <p>${p.desc}</p>\n          <div class='tags'>${p.tags.map(t=>`<span class='tag'>${t}</span>`).join('')}</div>\n        `;
+        el.onclick = ()=> openModal(p);
+        projectsGrid.appendChild(el);
+      });
+    }
+
+    renderProjects();
+
+    /* ------------------ Modal ------------------ */
+    const modal = document.getElementById('modal');
+    const modalContent = document.getElementById('modalContent');
+    function openModal(p){
+      modalContent.innerHTML = `<h3>${p.titulo}</h3><img src='${p.img}' style='width:100%;height:250px;object-fit:cover;border-radius:8px;margin:12px 0'><p style='color:var(--muted)'>${p.desc}</p><div style='margin-top:12px'><a class='btn' href='#' onclick='openProjectExternal(${p.id})'>Abrir projeto</a></div>`;
+      modal.classList.add('open');
+    }
+    function closeModal(){ modal.classList.remove('open'); }
+    function openProjectExternal(id){ alert('Aqui você poderia direcionar para uma página do projeto (id:'+id+')'); }
+
+    /* ------------------ WhatsApp helpers ------------------ */
+    const TELEFONE = '5511983456278';
+    function openWhats(){
+      const text = encodeURIComponent('Olá, gostaria de conversar sobre seus projetos, vi seu portfólio.');
+      window.open(`https://wa.me/${TELEFONE}?text=${text}`,'_blank');
+    }
+    function openWhatsFromForm(){
+      const nome = document.getElementById('nameInput').value.trim();
+      const msg = document.getElementById('msgInput').value.trim();
+      if(!nome || !msg){ alert('Preencha nome e mensagem.'); return; }
+      const text = encodeURIComponent(`Olá, me chamo ${nome}. ${msg}`);
+      window.open(`https://wa.me/${TELEFONE}?text=${text}`,'_blank');
+    }
+    function copyWhatsLink(){
+      const nome = document.getElementById('nameInput').value.trim() || 'Contato';
+      const msg = encodeURIComponent(`Olá, me chamo ${nome}. Gostaria de falar com você.`);
+      const link = `https://wa.me/${TELEFONE}?text=${msg}`;
+      navigator.clipboard?.writeText(link).then(()=>alert('Link copiado!'),()=>alert('Não foi possível copiar.'));
+    }
+
+    /* ------------------ fake CV download (placeholder) ------------------ */
+    function downloadFakeCV(){
+      const blob = new Blob([`CV - João Vitor\n\nEstudante de ADS, Front-end...`],{type:'text/plain'});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a'); a.href = url; a.download = 'CV-Joao-Vitor.txt'; document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(url);
+    }
+
+    /* ------------------ small util ------------------ */
+    function scrollToSection(id){document.getElementById(id).scrollIntoView({behavior:'smooth'})}
+
+    /* ------------------ Canvas animated background ------------------ */
+    const canvas = document.getElementById('bg-canvas');
+    const ctx = canvas.getContext('2d');
+    let DPR = Math.max(window.devicePixelRatio || 1,1);
+    function resize(){ canvas.width = window.innerWidth * DPR; canvas.height = window.innerHeight * DPR; canvas.style.width = window.innerWidth+'px'; canvas.style.height = window.innerHeight+'px'; ctx.setTransform(DPR,0,0,DPR,0,0); }
+    window.addEventListener('resize',resize); resize();
+
+    // particles
+    const particles = [];
+    const NUM = Math.floor((window.innerWidth/80));
+    function rand(a,b){return Math.random()*(b-a)+a}
+    class P{constructor(){this.reset()}
+      reset(){this.x = rand(0,innerWidth); this.y = rand(0,innerHeight*1.2); this.r = rand(0.6,3.2); this.vy = rand(.1,0.9); this.vx = rand(-0.2,0.2); this.alpha = rand(0.08,0.28); this.h = rand(180,220);}      
+      step(dt){ this.y -= this.vy*dt; this.x += this.vx*dt; if(this.y < -20) this.reset(); }
+      draw(){ ctx.beginPath(); ctx.fillStyle = `hsla(${this.h},90%,60%,${this.alpha})`; ctx.arc(this.x,this.y,this.r,0,Math.PI*2); ctx.fill(); }
+    }
+    for(let i=0;i<NUM;i++) particles.push(new P());
+
+    // subtle moving gradient wave
+    let t0 = performance.now();
+    function loop(now){
+      const dt = (now - t0)*0.06; t0 = now;
+      ctx.clearRect(0,0,innerWidth,innerHeight);
+
+      // big soft radial
+      const g = ctx.createRadialGradient(innerWidth*0.2,innerHeight*0.2,50,innerWidth*0.5,innerHeight*0.5,innerWidth);
+      g.addColorStop(0,'rgba(88,166,255,0.06)'); g.addColorStop(0.6,'rgba(88,166,255,0.02)'); g.addColorStop(1,'rgba(10,18,30,0.0)');
+      ctx.fillStyle = g; ctx.fillRect(0,0,innerWidth,innerHeight);
+
+      // wave overlay
+      ctx.globalCompositeOperation = 'lighter';
+      particles.forEach(p=>{ p.step(dt); p.draw(); });
+      ctx.globalCompositeOperation = 'source-over';
+
+      requestAnimationFrame(loop);
+    }
+    requestAnimationFrame(loop);
+
+    // small accessibility: reduce motion
+    const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
+    if(mq.matches){ /* stop heavy animations */ }
+
+  </script>
+</body>
+</html>

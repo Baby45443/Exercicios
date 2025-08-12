@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfólio - João Vitor</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            background: #0d1117;
+            color: #fff;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Fundo animado */
+        .particles {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+            top: 0;
+            left: 0;
+        }
+
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(88, 166, 255, 0.5);
+            animation: float linear infinite;
+        }
+
+        @keyframes float {
+            to {
+                transform: translateY(-100vh) translateX(var(--x));
+            }
+        }
+
+        nav {
+            position: fixed;
+            width: 100%;
+            background: rgba(22, 27, 34, 0.9);
+            padding: 15px 20px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            top: 0;
+            left: 0;
+            z-index: 10;
+            backdrop-filter: blur(5px);
+        }
+
+        nav a {
+            color: #58a6ff;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: #fff;
+        }
+
+        header {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        header img {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            border: 4px solid #58a6ff;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .subtitulo {
+            color: #8b949e;
+            font-size: 1.2rem;
+        }
+
+        section {
+            padding: 60px 20px;
+            max-width: 900px;
+            margin: auto;
+        }
+
+        .projetos {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: #161b22;
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card img {
+            max-width: 100%;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        .contato-form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        input, textarea, button {
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            outline: none;
+            font-size: 1rem;
+        }
+
+        input, textarea {
+            background: #0d1117;
+            border: 1px solid #30363d;
+            color: #fff;
+        }
+
+        button {
+            background: #58a6ff;
+            color: #fff;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: #1f6feb;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #8b949e;
+            border-top: 1px solid #30363d;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Fundo animado -->
+    <div class="particles" id="particles"></div>
+
+    <nav>
+        <a href="#inicio">Início</a>
+        <a href="#sobre">Sobre</a>
+        <a href="#projetos">Projetos</a>
+        <a href="#contato">Contato</a>
+    </nav>
+
+    <header id="inicio">
+        <img src="imagens/Perfil.jpg.jpg" alt="Foto de João Vitor">
+        <h1>João Vitor</h1>
+        <p class="subtitulo">Estudante de Programação | Front-end</p>
+    </header>
+
+    <section id="sobre">
+        <h2>Sobre Mim</h2>
+        <p>Sou estudante de Análise e Desenvolvimento de Sistemas, com foco em desenvolvimento front-end. Tenho paixão por criar interfaces modernas, responsivas e intuitivas, buscando sempre aprimorar minhas habilidades e aprender novas tecnologias.</p>
+    </section>
+
+    <section id="projetos">
+        <h2>Meus Projetos</h2>
+        <div class="projetos" id="lista-projetos"></div>
+    </section>
+
+    <section id="contato">
+        <h2>Entre em Contato</h2>
+        <form class="contato-form" onsubmit="enviarWhats(event)">
+            <input type="text" id="nome" placeholder="Seu nome">
+            <textarea id="mensagem" placeholder="Digite sua mensagem"></textarea>
+            <button type="submit">Enviar WhatsApp</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>© 2025 João Vitor - Todos os direitos reservados</p>
+    </footer>
+
+    <script>
+        // Lista de projetos dinâmica
+        const projetos = [
+            {
+                titulo: "Origem Android",
+                descricao: "Projeto sobre a história e evolução do Android.",
+                imagem: "imagens/Android.jpg.jpg"
+            },
+            {
+                titulo: "Projeto Cordel",
+                descricao: "Versão moderna e interativa de um cordel tradicional.",
+                imagem: "imagens/Cordel.jpg.jpg"
+            },
+            {
+                titulo: "Primeiro Desafio",
+                descricao: "Meu primeiro projeto como desenvolvedor.",
+                imagem: "imagens/Primeiro.jpg.jpg"
+            }
+        ];
+
+        const containerProjetos = document.getElementById("lista-projetos");
+
+        projetos.forEach(proj => {
+            const card = document.createElement("div");
+            card.classList.add("card");
+            card.innerHTML = `
+                <img src="${proj.imagem}" alt="${proj.titulo}">
+                <h3>${proj.titulo}</h3>
+                <p>${proj.descricao}</p>
+            `;
+            containerProjetos.appendChild(card);
+        });
+
+        // Envio WhatsApp
+        function enviarWhats(event) {
+            event.preventDefault();
+            const nome = document.getElementById('nome').value.trim();
+            const mensagem = document.getElementById('mensagem').value.trim();
+            const telefone = "5511983456278";
+
+            if (!nome || !mensagem) {
+                alert("Por favor, preencha todos os campos.");
+                return;
+            }
+
+            const texto = `Olá, me chamo ${nome}. ${mensagem}`;
+            const msgFormatada = encodeURIComponent(texto);
+            const url = `https://wa.me/${telefone}?text=${msgFormatada}`;
+
+            window.open(url, '_blank');
+        }
+
+        // Criar partículas no fundo
+        const particlesContainer = document.getElementById("particles");
+        const numParticles = 50;
+
+        for (let i = 0; i < numParticles; i++) {
+            const particle = document.createElement("div");
+            particle.classList.add("particle");
+            const size = Math.random() * 6 + 2;
+            particle.style.width = `${size}px`;
+            particle.style.height = `${size}px`;
+            particle.style.left = `${Math.random() * 100}%`;
+            particle.style.top = `${Math.random() * 100}%`;
+            particle.style.setProperty("--x", `${Math.random() * 200 - 100}px`);
+            particle.style.animationDuration = `${Math.random() * 10 + 5}s`;
+            particlesContainer.appendChild(particle);
+        }
+    </script>
+
+</body>
+</html>

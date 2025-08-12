@@ -41,7 +41,7 @@
         <h2 class="sobre-titulo">Sobre mim</h2>
         <div class="sobre-caixa">
             <p class="sobre-paragrafo">
-                Olá, sou um estudante de analise e desenvolvimento de sistemas. Meu foco é front-end, para poder desenvolver projetos com design modernos.
+                Olá! Sou estudante de Análise e Desenvolvimento de Sistemas, com foco em desenvolvimento front-end. Tenho paixão por criar interfaces modernas, responsivas e intuitivas, unindo estética e funcionalidade para proporcionar a melhor experiência ao usuário. Estou em constante aprendizado e busco aprimorar minhas habilidades para desenvolver projetos criativos e de alto padrão.
             </p>
         </div>
         <section id="projetos" class="projetos">
@@ -90,24 +90,24 @@
 </section>
 
 <script>
-function enviarWhats(event) {
-    event.preventDefault(); // Impede o envio normal do formulário
+  function enviarWhats(event) {
+            event.preventDefault();
+            const nome = document.getElementById('nome').value.trim();
+            const mensagem = document.getElementById('mensagem').value.trim();
+            const telefone = "5511983456278";
 
-    const nome = document.getElementById('nome').value.trim();
-    const mensagem = document.getElementById('mensagem').value.trim();
-    const telefone = '5511983456278'; // Seu número com DDI e DDD
+            if (!nome || !mensagem) {
+                alert("Por favor, preencha todos os campos.");
+                return;
+            }
 
-    if (!nome || !mensagem) {
-        alert("Por favor, preencha todos os campos.");
-        return;
-    }
+            const texto = `Olá, me chamo ${nome}. ${mensagem}`;
+            const msgFormatada = encodeURIComponent(texto);
+            const url = `https://wa.me/${telefone}?text=${msgFormatada}`;
 
-    const texto = `Olá, me chamo ${nome}. ${mensagem}`;
-    const msgFormatada = encodeURIComponent(texto);
-    const url = `https://wa.me/${telefone}?text=${msgFormatada}`;
+            window.open(url, '_blank');
+        }
 
-    window.open(url, '_blank'); // Abre o WhatsApp em nova aba
-}
 </script>
 
 </body>
